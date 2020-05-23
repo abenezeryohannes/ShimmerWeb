@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Databasedesigns.iml" filepath="$PROJECT_DIR$/.idea/Databasedesigns.iml" />
+      <module fileurl="file://$USER_HOME$/PhpstormProjects/shimmerweb/ShimmerWeb/.idea/ShimmerWeb.iml" filepath="$USER_HOME$/PhpstormProjects/shimmerweb/ShimmerWeb/.idea/ShimmerWeb.iml" />
+      <module fileurl="file://$USER_HOME$/PhpstormProjects/shimmerweb/.idea/shimmerweb.iml" filepath="$USER_HOME$/PhpstormProjects/shimmerweb/.idea/shimmerweb.iml" />
+    </modules>
+  </component>
+</project>
