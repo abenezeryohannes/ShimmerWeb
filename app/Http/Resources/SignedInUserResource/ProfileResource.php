@@ -31,6 +31,7 @@ class ProfileResource extends JsonResource
             'user_id' =>$this->user_id,
             'completed'=>$this->completed,
             'first_name'=>($this->user->first_name == null)?null : strtok($this->user->first_name, ' '),
+            'full_name'=>($this->user->first_name),
             'phone_number'=>$this->user->phone_number,
             'facebook_id'=>$this->user->facebook_id,
             'sex' => $this->sex,

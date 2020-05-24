@@ -88,7 +88,7 @@ class Match extends Model
                 $join->on('messages.match_id', '=', 'matches.id');
         })
 
-            
+
         ->where('messages.reciever_id', '=', $user_id_1)
         ->where('messages.sender_id', '=', $user_id_2)
         ->where('messages.seen', false)

@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e24300d8-1d69-4177-8181-eee98adb2b1b" name="Default Changelist" comment="before chat, match, notification" />
+    <list default="true" id="e24300d8-1d69-4177-8181-eee98adb2b1b" name="Default Changelist" comment="before chat, match, notification">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/LastKnown.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_24_161838_create_last_knowns_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LikeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LikeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MatchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MatchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SendPushNotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SendPushNotificationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ChatResource/Chat.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/ChatResource/Chat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/ChatResource/LikeResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/ChatResource/LikeResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/LikePeopleResource/LikersResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/LikePeopleResource/LikersResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/MatchedPeopleResource/ChatResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/MatchedPeopleResource/ChatResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Resources/SignedInUserResource/ProfileResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/SignedInUserResource/ProfileResource.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Match.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Match.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_08_172532_create_messages_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_08_172532_create_messages_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,19 +32,8 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>$swipe</find>
-      <find>completed</find>
-      <find>Tinder</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>$like</replace>
-      <replace>Shimmer</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$USER_HOME$/PhpstormProjects/shimmerweb" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -136,6 +146,12 @@
       <path value="$PROJECT_DIR$/vendor/riverline/multipart-parser" />
     </include_path>
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-4" />
+    <option name="y" value="-8" />
+    <option name="width" value="1346" />
+    <option name="height" value="698" />
+  </component>
   <component name="ProjectId" id="1cIrKgdAW4S9yAh0aghBe9yxXW1" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -197,7 +213,10 @@
       <workItem from="1588554286234" duration="661000" />
       <workItem from="1590226928597" duration="919000" />
       <workItem from="1590227945357" duration="1608000" />
-      <workItem from="1590229602583" duration="445000" />
+      <workItem from="1590229602583" duration="1458000" />
+      <workItem from="1590247050009" duration="37000" />
+      <workItem from="1590247230837" duration="19000" />
+      <workItem from="1590325833299" duration="8144000" />
     </task>
     <task id="LOCAL-00001" summary="For Heroku">
       <created>1571821703233</created>
@@ -322,6 +341,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="568" y="231" key="#Notifications/0.0.1366.738@0.0.1366.738" timestamp="1590228937271" />
+    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1590329280541">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="413" y="123" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1590329280541" />
     <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1590229769457">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -330,14 +353,18 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="149" y="55" key="DiffContextDialog/0.0.1366.738@0.0.1366.738" timestamp="1590229708276" />
-    <state x="463" y="110" key="FileChooserDialogImpl" timestamp="1590229546333">
+    <state x="463" y="110" key="FileChooserDialogImpl" timestamp="1590230293575">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1590229546333" />
-    <state x="552" y="266" key="Github.ShareDialog" timestamp="1590229863016">
+    <state x="463" y="110" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1590230293575" />
+    <state x="552" y="266" key="Github.ShareDialog" timestamp="1590230314065">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="552" y="266" key="Github.ShareDialog/0.0.1366.738@0.0.1366.738" timestamp="1590229863016" />
+    <state x="552" y="266" key="Github.ShareDialog/0.0.1366.738@0.0.1366.738" timestamp="1590230314065" />
+    <state x="447" y="73" key="Github.UntrackedFilesDialog" timestamp="1590230321563">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="447" y="73" key="Github.UntrackedFilesDialog/0.0.1366.738@0.0.1366.738" timestamp="1590230321563" />
     <state x="184" y="13" key="SettingsEditor" timestamp="1590230052761">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -346,5 +373,9 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1590229901696" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1590331188432">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1590331188432" />
   </component>
 </project>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Events\MessageSent;
+use App\LastKnown;
 use App\Message;
 use App\User;
 use App\Match;
@@ -17,7 +18,7 @@ class MessageController extends Controller
         //    $this->middleware('auth');
     }
 
-   
+
 
     /**
      * Fetch all messages
@@ -37,26 +38,26 @@ class MessageController extends Controller
      */
     public function sendMessage(Request $request)
     {
-        
+
         $user = User::where('id', '=',$request['receiver'])->first();
         // return $user->UnreadCount($user->id);
-      
-        
+
+
         $match_id = $request['match'];
         $matched = Match::find($match_id);
-    
+
 
         if($matched == null)
-        $matched = 
+        $matched =
         Match::where('user_id_1', '=', $request['sender'])
         ->where('user_id_2', '=', $request['receiver'])
         ->orWhere('user_id_2', '=', $request['sender'])
         ->where('user_id_1', '=', $request['receiver'])
         ->first();
-        
-        
+
+
         if($matched == null ) return response()->json(['status'=> 'you are not matched yet!']);
-    
+
         if($matched->user_id_2 == $request['sender'])
             {
                 $matched->seen = true;
@@ -72,7 +73,7 @@ class MessageController extends Controller
         $message->sender_id = $request['sender'];
         $message->reciever_id = $request['receiver'];
         $message->seen = 0;
-        
+
 
         $message->save();
 
@@ -91,22 +92,37 @@ class MessageController extends Controller
             'user_id_1' => 'required',
             'user_id_2' => 'required',
         ]);
-        return ChatRes::collection(Message::GetConversationOf($request['user_id_1'], $request['user_id_2'])->paginate(20));
+
+        $messages = Message::GetConversationOf($request['user_id_1'], $request['user_id_2'])->paginate(20);
+        if(sizeof($messages)>0) {
+            $lastKnown = LastKnown::where('user_id', '=', $request['user_id'])->first();
+            $lastKnown->message_id = ($lastKnown->message_id > $messages[0]->id) ? $lastKnown->message_id : $messages[0]->id;
+            $lastKnown->save();
+        }
+        return ChatRes::collection($messages);
     }
 
 
 
     public function getMessageAfter(Request $request){
-        return ChatRes::collection(Message::GetConversationOf($request['user1'], $request['user2'])->where('messages.id', '>', $request['message'])->paginate(20));
+
+        $messages = Message::GetConversationOf($request['user_id_1'], $request['user_id_2'])->paginate(20);
+
+        if(sizeof($messages)>0) {
+            $lastKnown = LastKnown::where('user_id', '=', $request['user_id_1'])->first();
+            $lastKnown->message_id = ($lastKnown->message_id != null && $lastKnown->message_id > $messages[0]->id) ? $lastKnown->message_id : $messages[0]->id;
+            $lastKnown->save();
+        }
+        return ChatRes::collection($messages);
     }
-    
+
 
     public function getMessageBefore(Request $request){
         return ChatRes::collection(Message::GetConversationOf($request['user1'], $request['user2'])->where('messages.id', '<', $request['message'])->paginate(20));
     }
 
 
-    
+
 
     public function getlastChat(Request $request){
 
@@ -114,9 +130,9 @@ class MessageController extends Controller
             'user_id_1' => 'required',
             'user_id_2' => 'required',
         ]);
-        
+
         return new ChatRes(Message::GetConversationOf($request['user_id_1'], $request['user_id_2'])->latest());
- 
+
     }
 
 
@@ -128,7 +144,7 @@ class MessageController extends Controller
     public function index()
     {
         //
-    } 
+    }
 
 
 
@@ -137,7 +153,7 @@ class MessageController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */      
+     */
     public function create()
     {
         //
@@ -151,7 +167,7 @@ class MessageController extends Controller
      */
     public function makeMessageSeen(Request $request)
     {
-        
+
         $validatedRequest = $request->validate([
             'user_id' => 'required',
             'message_id' => 'required',
@@ -159,13 +175,13 @@ class MessageController extends Controller
 
 
         $message = Message::find($request['message_id']);
-        
+
         if($message->reciever_id == $request['user_id']){
             $message->seen = true;
             $message->save();
             return response()->json(["status"=> "Success"]);
         }
-        
+
         return response()->json(["status"=> "Error, You are Not reciever or message id doesn't exist."]);
 
     }
@@ -210,7 +226,7 @@ class MessageController extends Controller
 
 
         }
-        
+
     }
 
     /**

@@ -17,7 +17,7 @@ class LikeResource extends JsonResource
      */
     public function toArray($request)
     {
-        $createdAt = Carbon::parse($this->created_at);
+        $time = (Carbon::parse($this->created_at));//Carbon::now()->diffInMilliSeconds
         //id	user_id	picture_id	answare_id	notified	comment	type	created_at	updated_at
         return [
             //this is likers model
@@ -28,8 +28,7 @@ class LikeResource extends JsonResource
             'liked_question_and_answer' => new Q_and_A($this->answare),//
             'comment' => $this->comment,
             'super_like' => $this->super_like,
-            'time' => ($createdAt)// < Carbon::now()->subDay())? $createdAt->format('F d Y'): $createdAt->format('h:m a')
-        
+            'time' => $time->toDateTimeString() // < Carbon::now()->subDay())? $createdAt->format('F d Y'): $createdAt->format('h:m a')
              ];
     }
 }

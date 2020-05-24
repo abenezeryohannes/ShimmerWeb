@@ -17,7 +17,7 @@ class Chat extends JsonResource
      */
     public function toArray($request)
     {        
-        $createdAt = Carbon::parse($this->created_at);
+        $time = (Carbon::parse($this->created_at));//Carbon::now()->diffInMilliSeconds
         return [
             'id'=>$this->id,
             'sender' => $this->sender_id,
@@ -25,7 +25,7 @@ class Chat extends JsonResource
             'match_id' => $this->match_id,
             'text' => $this->message,
             'seen' => $this->seen,
-            'time' => $createdAt
+            'time' => $time->toDateTimeString()
             ];
     }
 

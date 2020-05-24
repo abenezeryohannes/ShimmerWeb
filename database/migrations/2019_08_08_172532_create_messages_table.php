@@ -18,20 +18,28 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('match_id');
             $table->unsignedBigInteger('sender_id');
             $table->unsignedBigInteger('reciever_id');
+
+            $table->unsignedInteger('type')->nullable();
+            $table->string('document')->nullable();
+            $table->string('image')->nullable();
+            $table->string('audio')->nullable();
+            $table->string('video')->nullable();
+            $table->unsignedBigInteger('replay')->nullable();
+
             $table->string('message');
             $table->boolean('status')->nullable();
             $table->boolean('seen')->default(true);
             $table->timestamps();
         });
 
-        
-         
+
+
         Schema::table('messages', function(Blueprint $table){
 
             $table->foreign('sender_id')->references('id')->on('users');
             $table->foreign('match_id')->references('id')->on('matches');
             $table->foreign('reciever_id')->references('id')->on('users');
-          
+
         });
     }
 

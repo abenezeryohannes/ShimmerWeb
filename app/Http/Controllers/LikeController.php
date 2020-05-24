@@ -6,6 +6,7 @@ use App\Http\Resources\LikePeopleResource\LikeResource;
 use App\Http\Resources\PaymentResource\UserOperations;
 use App\Http\Resources\MatchedPeopleResource\MatchResource;
 use App\Http\Resources\ChatResource\LikeResource as ChatLike;
+use App\LastKnown;
 use App\Like;
 use App\Swipe;
 use App\Match;
@@ -26,6 +27,16 @@ class LikeController extends Controller
 
         // $likers = Like::Where('liked_user_id', '=', $request['user_id'])->orderBy('id', 'desc')->paginate(100);
         $likers = Like::GetLikers($request['user_id'])->paginate(100);
+
+        $users = User::all();
+
+        if(sizeof($likers)>0) {
+
+            $lastKnown = LastKnown::where('user_id', '=', $request['user_id'])->first();
+            $lastKnown->like_id = ($lastKnown->like_id != null && $lastKnown->like_id > $likers->last()->id) ? $lastKnown->like_id : $likers->last()->id;
+            $lastKnown->save();
+        }
+
         return LikeResource::collection($likers);
     }
 
@@ -39,6 +50,16 @@ class LikeController extends Controller
         $likers = Like::Where('liked_user_id', '=', $request['user_id'])
                         ->where('id', '>', $request['like_id'])
                         ->orderBy('id', 'desc')->paginate(100);
+
+        if(sizeof($likers)>0) {
+            $lastKnown = LastKnown::where('user_id', '=', $request['user_id'])->first();
+            $lastKnown->like_id = ($lastKnown->like_id != null && $lastKnown->like_id > $likers->first()->id) ? $lastKnown->like_id : $likers->first()->id;
+            $lastKnown->save();
+        }
+
+//        dd($lastKnown);
+
+
         return LikeResource::collection($likers);
     }
 
@@ -156,10 +177,13 @@ class LikeController extends Controller
             $spn = new SendPushNotificationController($like->userLiked()->first());
             $spn->sendNewMatchNotification($match);
 
+        }else{
+
+            $spn = new SendPushNotificationController($like->userLiked()->first());
+            $spn->sendLikeNotification($like);
+
         }
 
-        $spn = new SendPushNotificationController($like->userLiked()->first());
-        $spn->sendLikeNotification($like);
 
         // dd($like->liker_user_id);
          if($likeMeBefore!=null){

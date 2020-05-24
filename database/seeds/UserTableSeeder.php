@@ -1,5 +1,6 @@
 <?php
 
+use App\LastKnown;
 use Illuminate\Database\Seeder;
 use App\User;
 use App\Setting;
@@ -37,6 +38,11 @@ class UserTableSeeder extends Seeder
             // else $user->sex = "Man";
             $user->email = $names[$i] . rand(1, 100) ."@gmail.com";
             $user->save();
+
+            $lastKnown = new LastKnown();
+            $lastKnown->user_id = $user->id;
+            $lastKnown->save();
+
         }
         $setting  = new Setting();
         $setting->save();

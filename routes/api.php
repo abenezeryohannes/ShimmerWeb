@@ -36,12 +36,12 @@ Route::post('/likers', "LikeController@likers");
 Route::post('/newLikers', "LikeController@newLikers");
 Route::post('/like', "LikeController@like");
 Route::post('/getlike', "LikeController@getLikeForChat");
-Route::post('/getlike', "MatchController@getMatchAfter");
+// Route::post('/getlike', "MatchController@getMatchAfter");
 
 //Match Controller
 Route::post('/matches', "MatchController@show");
 Route::post('/match', "MatchController@create");
-Route::post('/getlike', "LikeController@getLikeForChat");
+// Route::post('/getlike', "LikeController@getLikeForChat");
 
 // signUp Users
 Route::post('/signup', "UserController@signUp");
@@ -75,12 +75,9 @@ Route::get('getuser/{id}', function($id){
 
 //create new User
 Route::post('sign_up', 'UserController@sign_up');
-
 Route::post('postusers', 'UserController@store');
-
 //update User
 Route::put('putusers', 'UserController@store');
-
 //Delete user
 Route::delete('deleteusers', 'UserController@destroy');
 
@@ -137,11 +134,6 @@ Route::post('editSmoking', 'ProfileController@editSmoking');
 Route::post('editRelationshipType', 'ProfileController@editRelationshipType');
 
 
-
-
-
-
-
 Route::post('editSexPreference', 'PreferenceController@editSexPreference');
 Route::post('editAgeRangePreference', 'PreferenceController@editAgeRangePreference');
 Route::post('editHeightRangePreference', 'PreferenceController@editHeightRangePreference');
@@ -155,8 +147,6 @@ Route::post('editkidPreference', 'PreferenceController@editkidPreference');
 Route::post('editRelationshipTypePreference', 'PreferenceController@editRelationshipType');
 
 
-
-
 Route::get('getPaymentTypes', 'PaymentController@getPaymentTypes');
 Route::post('getPaymentTypesof', 'PaymentController@getPaymentTypesof');
 Route::post('getFullPaymentType', 'PaymentController@getFullPaymentType');
@@ -165,9 +155,6 @@ Route::post('getFullPaymentTypes', 'PaymentController@getFullPaymentTypes');
 Route::post('getUserActivePayments', 'PaymentController@getUserActivePayments');
 Route::post('pay', 'PaymentController@pay_by_cbe');
 Route::post('pay_by_phone', 'PaymentController@pay_by_phone');
-
-
-
 
 
 Route::post('getUnmatched', 'MatchController@getUnmatched');
@@ -179,13 +166,11 @@ Route::post('getMessageBefore', 'MessageController@getMessageBefore');
 Route::post('reportUser', 'ReportController@reportUser');
 
 
-
-
-
 Route::post('sessionStart', 'SessionController@sessionStart');
 Route::post('sessionEnd', 'SessionController@sessionEnd');
 
 Route::post('boost_me', 'BoostController@boost');
+
 
 Route::post('deletePhoneNumberLink', 'PhonenumberController@deletePhoneNumber');
 Route::post('editPhoneNumberLink', 'PhonenumberController@editPhoneNumber');

@@ -190,7 +190,7 @@ class UserController extends Controller
            // dd($user->id);
            
             if($user->pictures()->first() != null)
-                return response()->json(["status" => "new", "user_profile" => new SignedUserResource(Profile::find($profile->id))]);
+                return response()->json(["status" => "old", "user_profile" => new SignedUserResource(Profile::find($profile->id))]);
             else
                 return response()->json(["status" => "new", "user_profile" => new SignedUserResource(Profile::find($profile->id))]);
         }else 

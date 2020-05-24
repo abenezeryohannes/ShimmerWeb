@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\LastKnown;
 use App\PaymentType;
 use App\Payment;
 use Carbon;
@@ -63,6 +64,9 @@ class PaymentController extends Controller
 
         $payment = Payment::where('user_id', '=', $user_id)->where('expiration_date', '>', Carbon::now())->get();
 
+        $lastKnown = LastKnown::where('user_id', '=', $request['user_id'])->first();
+        $lastKnown->payment_id = ($lastKnown->payment_id>$payment->last()->id)?$lastKnown->payment_id:$payment->last()->id;
+        $lastKnown->save();
         // dd($payment);
         return UserPaymentResource::make($payment)->user($request['user_id']);//Response()->json(Match::GetUnseenCount(1, 2));//
 
@@ -111,6 +115,7 @@ class PaymentController extends Controller
 
         //$paymentPrev = Payment::where('user_id', '=', $user->id)->delete();
 
+        // dd($user);
         $payment = new Payment();
         $payment->user_id = $user->id;
         $payment->payment_type_id = $payment_type->id;
@@ -120,8 +125,8 @@ class PaymentController extends Controller
         $payment->expiration_date = $today->addDays($payment_type->date_length);
         $payment->save();
 
-        // $spn = new SendPushNotificationController($user);
-        // $spn->sendPayment($payment);
+        $spn = new SendPushNotificationController($user);
+        $spn->sendPaymentInformation($payment);
 
         return new PaymentResource($payment);
 

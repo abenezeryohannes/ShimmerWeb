@@ -20,7 +20,7 @@ class LikersResource extends JsonResource
      */
     public function toArray($request)
     {
-        $time = Carbon::parse($this->created_at);
+        $time = (Carbon::parse($this->created_at));//Carbon::now()->diffInMilliSeconds
        
         return [
             'id'=>$this->id,
@@ -29,7 +29,7 @@ class LikersResource extends JsonResource
             'comment' => $this->comment,
             'seen' => $this->seen,
             'super_like' => $this->super_like,
-            'time' => $time
+            'time' => $time->toDateTimeString()
             ];
     }
 
