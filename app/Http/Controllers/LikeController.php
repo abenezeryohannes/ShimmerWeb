@@ -26,7 +26,8 @@ class LikeController extends Controller
         ]);
 
         // $likers = Like::Where('liked_user_id', '=', $request['user_id'])->orderBy('id', 'desc')->paginate(100);
-        $likers = Like::GetLikers($request['user_id'])->paginate(100);
+        $likers = Like::GetLikers($request['user_id'])
+                    ->orderBy('likes.id', 'desc')->paginate(100);
 
         $users = User::all();
 
@@ -47,9 +48,9 @@ class LikeController extends Controller
             'like_id' => 'required',
         ]);
 
-        $likers = Like::Where('liked_user_id', '=', $request['user_id'])
-                        ->where('id', '>', $request['like_id'])
-                        ->orderBy('id', 'desc')->paginate(100);
+        $likers = Like::GetLikers($request['user_id'])
+                        ->where('likes.id', '>', $request['like_id'])
+                        ->orderBy('likes.id', 'desc')->paginate(100);
 
         if(sizeof($likers)>0) {
             $lastKnown = LastKnown::where('user_id', '=', $request['user_id'])->first();

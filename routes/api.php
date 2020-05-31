@@ -177,3 +177,9 @@ Route::post('editPhoneNumberLink', 'PhonenumberController@editPhoneNumber');
 Route::post('createPhoneNumberLink', 'PhonenumberController@createPhoneNumber');
 Route::post('getLinkedPhoneNumbers', 'PhonenumberController@getLinkedPhoneNumbers');
 Route::post('nope', 'NopeController@nope');
+
+
+Route::post('linkTg', 'TelegramInviteController@linkTelegramAccount');
+Route::post('confirmTg', 'TelegramInviteController@confirmTg');
+Route::post('getTg', 'TelegramInviteController@getTg');
+Route::post('confirmBankPayment', 'UserReceiptController@checkReceipt');

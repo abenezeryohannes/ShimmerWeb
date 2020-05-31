@@ -44,8 +44,12 @@ class UserTableSeeder extends Seeder
             $lastKnown->save();
 
         }
-        $setting  = new Setting();
-        $setting->save();
+        // $setting->free_likes_per_day = "10";
+        // $setting->free_boosts_per_month = "0";
+        // $setting->free_super_likes_per_month = "5";
+        // $setting->boost_minutes = "180";
+        // $setting->phone_number = "934333297";
+        // $setting->bank_account = "1000197219387";
         // factory(User::class, 10)->create();
     }
 }

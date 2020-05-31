@@ -17,8 +17,8 @@ class CreatePaymentTypeTable extends Migration
                 $table->bigIncrements('id');
                 $table->string('name');
                 $table->string('type')->default("subscribtion");
-                $table->string('short_desc');
-                $table->string('long_desc');
+                $table->longText('short_desc');
+                $table->longText('long_desc');
                 $table->unsignedInteger('likes_per_day')->default(1000000);
                 $table->unsignedInteger('super_likes_per_day')->default(5);
                 $table->unsignedInteger('view_likes_per_day')->default(1000000);

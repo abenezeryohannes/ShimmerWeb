@@ -43,7 +43,7 @@ class PictureController extends Controller
              $image->move($destinationPath, $name);
              $image2->blur(35);
              $image2->save($destinationPath ."/". $base_name . 'lq.' . 'jpg', 10);
-           
+
 
              $picture = Picture::where('user_id', '=', $request['user_id'])
                                  ->where('order', '=', $request['order'])->first();
@@ -67,13 +67,13 @@ class PictureController extends Controller
             // $image->encode('jpg', 10);
             // $image->move($destinationPathforplaceholder, $name);
 
-            
+
             $profile = Profile::where('user_id', '=', $picture->user_id)->first();
             $profile->completed = (55 + (($profile->answers->count() + $profile->pictures->count())*5));
             $profile->save();
-            
 
-            
+
+
 
 
          //   return response()->json([
@@ -82,27 +82,27 @@ class PictureController extends Controller
          //       'destination' => public_path('img')
          //       ]);
 
-         $user = User::find($picture->user_id);
-         $allUsers = User::all();
-         if($picture->order==1)
-         foreach($allUsers as $u){
-             if($u->id==$user->id)continue;
-             $like = new Like();
-             $like->liker_user_id = $u->id;
-             $like->liked_user_id = $user->id;
-         
-             $picture = Picture::where('user_id', '=', $user->id)->first();
-             $like->picture_id = $picture->id;
-             
-             $like->notified = false;
-             $like->comment = "U luk cute!";
-             $like->save();    
-         }
- 
-       
+//         $user = User::find($picture->user_id);
+//         $allUsers = User::all();
+//         if($picture->order==1)
+//         foreach($allUsers as $u){
+//             if($u->id==$user->id)continue;
+//             $like = new Like();
+//             $like->liker_user_id = $u->id;
+//             $like->liked_user_id = $user->id;
+//
+//             $picture = Picture::where('user_id', '=', $user->id)->first();
+//             $like->picture_id = $picture->id;
+//
+//             $like->notified = false;
+//             $like->comment = "U luk cute!";
+//             $like->save();
+//         }
+
+
              return new PictureResource($picture);
             //response()->json(['status' => "success", 'name' => $name, 'destination' => public_path('img') ]);
-            
+
     }
 
     /**
@@ -122,19 +122,19 @@ class PictureController extends Controller
 
         $url = $request['url'];
         $url =  str_replace('"', '', $url);
-        
+
         //return "yes";
         $extenstion = pathinfo($url, PATHINFO_EXTENSION);
         $base_name = time() . $request['order'];
         $filename = $base_name .  '.'  . "jpg";
-    
+
 
         $file = Image::make($url)->save(public_path('img') . "/"  .$filename);
-        
+
          $image2 = Image::make($url);
          $image2->blur(35);
          $image2->save($destinationPath ."/". $base_name . 'lq.' . 'jpg', 10);
-       
+
         // $save = file_put_contents('img', $filename, $file);
         //$destinationPath = public_path('img');
         //$file->move($destinationPath, $filename);
@@ -151,18 +151,18 @@ class PictureController extends Controller
             $picture = new Picture();
             if($pics!=null) $picture->order = $pics->order;
             else  $picture->order = 0;
-        } 
+        }
         $picture->user_id = $request['user_id'];
         $picture->order = $request['order'];
         $picture->name = $filename;
         $picture->save();
 
- 
+
         $profile = Profile::where('user_id', '=', $picture->user_id)->first();
         $profile->completed = (55 + (($profile->answers->count() + $profile->pictures->count())*5));
         $profile->save();
-        
-        
+
+
         // $user = User::find($picture->user_id);
         // $allUsers = User::all();
         // if($picture->order==1)
@@ -171,19 +171,19 @@ class PictureController extends Controller
         //     $like = new Like();
         //     $like->liker_user_id = $u->id;
         //     $like->liked_user_id = $user->id;
-        
+
         //     $picture = Picture::where('user_id', '=', $user->id)->first();
         //     $like->picture_id = $picture->id;
-            
+
         //     $like->notified = false;
         //     $like->comment = "U luk cute!";
-        //     $like->save();    
+        //     $like->save();
         // }
 
-      
+
 
         return new PictureResource($picture);
-        
+
     }
 
     /**
@@ -195,19 +195,19 @@ class PictureController extends Controller
     public function show(Picture $picture)
     {
         //
-        $validatedRequest = $request->validate([
+        $validatedRequest = $picture->validate([
             'name' => 'required',
         ]);
 
-        $url = "" . $request['name'];
+        $url = "" . $picture['name'];
         $extenstion = pathinfo($url, PATHINFO_EXTENSION);
-        
+
         $img = Image::make($url);
 
         header('Content-Type: image/' . $extenstion);
         return $img->response();
 
-        
+
 
 
 
@@ -221,8 +221,8 @@ class PictureController extends Controller
                             ->where('id', '=', $request['picture_id'])->first();
 
 
-    
-        
+
+
         if($picture == null)
         {
             new PictureResource(null);
@@ -252,7 +252,7 @@ class PictureController extends Controller
 
 
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *

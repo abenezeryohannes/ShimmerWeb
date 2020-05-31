@@ -56,14 +56,12 @@ class Like extends Model
                     ->whereRaw('nopes.noper_id IS NULL AND nopes.noped_id IS NULL')
                     
                     ->leftJoin('matches', function($join) use ($user_id){
-
                     $join->On('matches.user_id_2','=',  'likes.liker_user_id')
                             ->where('matches.user_id_1', '=', $user_id)
                             ->orOn('matches.user_id_1','=',  'likes.liker_user_id')
                             ->where('matches.user_id_2','=',  $user_id);
                         })
                     ->whereRaw('matches.user_id_1 IS NULL AND matches.user_id_2 IS NULL')
-                    
                     ->select('likes.*');
 
     }

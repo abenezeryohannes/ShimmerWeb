@@ -95,7 +95,7 @@ class MessageController extends Controller
 
         $messages = Message::GetConversationOf($request['user_id_1'], $request['user_id_2'])->paginate(20);
         if(sizeof($messages)>0) {
-            $lastKnown = LastKnown::where('user_id', '=', $request['user_id'])->first();
+            $lastKnown = LastKnown::where('user_id', '=', $request['user_id_1'])->first();
             $lastKnown->message_id = ($lastKnown->message_id > $messages[0]->id) ? $lastKnown->message_id : $messages[0]->id;
             $lastKnown->save();
         }
@@ -106,7 +106,8 @@ class MessageController extends Controller
 
     public function getMessageAfter(Request $request){
 
-        $messages = Message::GetConversationOf($request['user_id_1'], $request['user_id_2'])->paginate(20);
+        $message = $request['message'];
+        $messages = Message::GetConversationOf($request['user_id_1'], $request['user_id_2'])->where('messages.id','>',$message)->paginate(20);
 
         if(sizeof($messages)>0) {
             $lastKnown = LastKnown::where('user_id', '=', $request['user_id_1'])->first();

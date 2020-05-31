@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(UserTableSeeder::class);
+         $this->call(SettingsTableSeeder::class);
          $this->call(KidsTableSeeder::class);
          $this->call(HeightsTableSeeder::class);
          $this->call(RelationshipTypesTableSeeder::class);
@@ -28,19 +28,20 @@ class DatabaseSeeder extends Seeder
 
 
          $this->call(QuestionsTableSeeder::class);
-         $this->call(AnswaresTableSeeder::class);
-         $this->call(ProfilesTableSeeder::class);
-         $this->call(PreferencesTableSeeder::class);
-         $this->call(PicturesTableSeeder::class);
-        //  $this->call(LikesTableSeeder::class);
 
 
+         //$this->call(UserTableSeeder::class);
+         //$this->call(AnswaresTableSeeder::class);
+         //$this->call(ProfilesTableSeeder::class);
+         //$this->call(PreferencesTableSeeder::class);
+         //$this->call(PicturesTableSeeder::class);
+         //$this->call(ElloScoresTableSeeder::class);
+         //$this->call(LastTimeLoggedinsTableSeeder::class);
 
-        //  $this->call(MatchesTableSeeder::class);
-         $this->call(MessagesTableSeeder::class);
+         //  $this->call(LikesTableSeeder::class);
+         //  $this->call(MatchesTableSeeder::class);
+         //  $this->call(MessagesTableSeeder::class);
          $this->call(PaymentTypesTableSeeder::class);
-         $this->call(ElloScoresTableSeeder::class);
-         $this->call(LastTimeLoggedinsTableSeeder::class);
 
     }
 }

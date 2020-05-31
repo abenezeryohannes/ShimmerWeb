@@ -146,6 +146,7 @@ class PaymentController extends Controller
 
         $user = User::where('id', '=', $user_id)->first();
 
+        $phone_number = $request['phone_number'];
         if($user == null){
             $phone = Phonenumber::where('phone_number', '=', $phone_number)->first();
             if($phone == null) return response()->json(['status'=> 'This phone number is not linked to any account']);

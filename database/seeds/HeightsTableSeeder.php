@@ -7,7 +7,7 @@ class HeightsTableSeeder extends Seeder
 {
     public function feet2cm($foot, $inch){
         $cm = 30.48 * $foot;
-        $cm += 1.54 * $inch;
+        $cm += 2.54 * $inch;
         return (int) $cm;
     }
     /**
@@ -22,7 +22,7 @@ class HeightsTableSeeder extends Seeder
             for($j = 0;$j<12;$j++){
             $height = new Height();
             $cm = 30.48 * $i;
-            $cm += 1.54 * $j;
+            $cm += 2.54 * $j;
             $height->cm =$cm;
             $feet = (string) $i;
             $inch = (string) $j;
@@ -30,7 +30,6 @@ class HeightsTableSeeder extends Seeder
             $height->save();
             }
         }
-
     }
     //1foot = 30.48cm
     //1inch = 1.54 centimeters

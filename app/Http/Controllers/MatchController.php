@@ -133,11 +133,11 @@ class MatchController extends Controller
 
 
 
-
-
-        $lastKnown = LastKnown::where('user_id', '=', $request['user_id'])->first();
-        $lastKnown->match_id = ($lastKnown->match_id != null && $lastKnown->match_id>$matches->first()->id)?$lastKnown->match_id:$matches->first()->id;
-        $lastKnown->save();
+        if(sizeOf($matches)>0){
+            $lastKnown = LastKnown::where('user_id', '=', $request['user_id'])->first();
+            $lastKnown->match_id = ($lastKnown->match_id != null && $lastKnown->match_id>$matches->first()->id)?$lastKnown->match_id:$matches->first()->id;
+            $lastKnown->save();
+        }
 
         return MatchCollection::make($matches)->user( $user );
     }

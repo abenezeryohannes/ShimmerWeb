@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\FindPeopleResource\LikeResource;
 use App\Like;
+use App\Nope;
 use App\User;
+use App\Unmatch;
+use App\Session;
+use App\LastTimeLoggedin;
+use App\Boost;
 use App\Height;
 use App\ElloScore;
 use App\Kid;
 use App\Swipe;
+use App\LastKnown;
 use App\Education;
 use App\Payment;
 use App\Match;
@@ -88,7 +94,7 @@ class UserController extends Controller
                $user = new User();
                $user->phone_number = $request->phone_number;
            }
-            
+
         }else if ($request->facebook_id != null ){
             $user = User::where('facebook_id', '=', $request->facebook_id)->first();
             if($user == null){
@@ -120,7 +126,7 @@ class UserController extends Controller
         ]);
 
         return new UserResource($user);
-        
+
     }
 
 
@@ -134,11 +140,11 @@ class UserController extends Controller
 
         //get all unread messages
 
-        //group all unread messages by 
+        //group all unread messages by
 
         //get all unread message matches
 
-        
+
 
 
 
@@ -152,9 +158,9 @@ class UserController extends Controller
 
 
 
-    
+
     public function login(Request $request){
-        
+
         $validatedUser = $request->validate([
             // 'phone_number' => 'required'
             ]);
@@ -163,14 +169,14 @@ class UserController extends Controller
         if($request->phone_number != null){
             $phone_number = $request['phone_number'];
             // dd("phone!=null");
-            $phone_number = str_replace(' ', '', $phone_number);    
+            $phone_number = str_replace(' ', '', $phone_number);
             $user = User::where('phone_number', '=', $request->phone_number)->first();
             // if($user == null){
             //     $user = new User();
             //     $user->phone_number = $request->phone_number;
             //     // $user->save();
             // }
-             
+
          }else if ($request->facebook_id != null ){
              $user = User::where('facebook_id', '=', $request->facebook_id)->first();
         //    dd("phone==null but fb is not " . $user);
@@ -183,26 +189,26 @@ class UserController extends Controller
          }else{
              return response()->json(["status"=>"failure", "message"=>"no phone number or facebook info provided !! "]);
          }
-         
-        
+
+
         if($user != null){
             $profile = (Profile::where('user_id', '=', $user->id)->first());
            // dd($user->id);
-           
+
             if($user->pictures()->first() != null)
                 return response()->json(["status" => "old", "user_profile" => new SignedUserResource(Profile::find($profile->id))]);
             else
                 return response()->json(["status" => "new", "user_profile" => new SignedUserResource(Profile::find($profile->id))]);
-        }else 
+        }else
             $user = new User;
             if($request->phone_number != null){
                 $phone_number = $request->phone_number;
-                $phone_number = str_replace(' ', '', $phone_number);    
+                $phone_number = str_replace(' ', '', $phone_number);
                 $user->phone_number = $request->phone_number;
              }else if ($request->facebook_id != null ){
                      $user->facebook_id = $request->facebook_id;
-                 }             
-             
+                 }
+
             //  $user->phone_number = $phone_number;
             // $user->first_name = $request->first_name;
             // $user->last_name = $request->last_name;
@@ -233,8 +239,8 @@ class UserController extends Controller
                 ]);
 
     }
-   
-    
+
+
 
 
 
@@ -244,13 +250,13 @@ class UserController extends Controller
 
 
     public function reviewPeoples(Request $request){
-        
+
         $validatedUser = $request->validate([
-            
+
             'user_id' => 'required',
-            
+
             ]);
-            
+
         Swipe::where('swiper_id', '=', $request['user_id'])->delete();
 
         return response()->json([
@@ -265,9 +271,9 @@ class UserController extends Controller
 
 
     public function getProfile(Request $request){
-        
+
         $validatedUser = $request->validate([
-            
+
             'user_id' => 'required',
             ]);
 
@@ -299,7 +305,7 @@ class UserController extends Controller
 
     }
 
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -340,7 +346,7 @@ class UserController extends Controller
             $phone_number = str_replace('00251', '', $phone_number);
 
             $deletePhoneRelation = Phonenumber::where('phone_number', '=', $request['phone_number'])->delete();
-        
+
         // return response()->json([
         //     "sex" => "sex"]);
 
@@ -349,7 +355,7 @@ class UserController extends Controller
                 $user = new User();
             }
             $user->phone_number = $phone_number;
-         
+
 
         }else if($facebook_id!=null){
             $user = User::where('facebook_id', '=', $facebook_id)->first();
@@ -369,8 +375,8 @@ class UserController extends Controller
 
         //dd($user);
         $location = new Location();
-        $location->user_id =$user->id; 
-        $location->latitude = $validatedUser['latitude']; 
+        $location->user_id =$user->id;
+        $location->latitude = $validatedUser['latitude'];
         $location->longitude = $validatedUser['longitude'];
         $location->save();
 
@@ -379,18 +385,18 @@ class UserController extends Controller
         if($profile == null){
             $profile = new Profile();
         }
-        $profile->user_id = $user->id; 
-        $profile->kid_id = $validatedUser['kid_id']; 
-        $profile->education_id = $request['education_id']; 
+        $profile->user_id = $user->id;
+        $profile->kid_id = $validatedUser['kid_id'];
+        $profile->education_id = $request['education_id'];
         $profile->relationship_type_id = $request['relationship_type_id'];
-        $profile->religion_id = $request['religion_id']; 
+        $profile->religion_id = $request['religion_id'];
         $profile->sex = ($validatedUser['sex'] == 1)? "Man":"Woman";
-        $profile->age = $validatedUser['age']; 
-        $profile->height_id = $validatedUser['height_id']; 
-        $profile->work = $request['work']; 
-        $profile->job = $request['job']; 
-        $profile->school = $request['school']; 
-        $profile->drink_id = $validatedUser['drink_id']; 
+        $profile->age = $validatedUser['age'];
+        $profile->height_id = $validatedUser['height_id'];
+        $profile->work = $request['work'];
+        $profile->job = $request['job'];
+        $profile->school = $request['school'];
+        $profile->drink_id = $validatedUser['drink_id'];
         $profile->smoke_id = $validatedUser['smoke_id'];
         $profile->home_town = $request['home_town'];
         $profile->family_plan_id = $validatedUser['family_plan_id'];
@@ -400,16 +406,16 @@ class UserController extends Controller
         $Preference = Preference::where('user_id', '=', $user->id)->first();
         if($Preference == null)
             $Preference = new Preference();
-        $Preference->user_id = $user->id; 
+        $Preference->user_id = $user->id;
         $Preference->family_plan_id = $request['family_plan_id'];
         if($validatedUser['sex_preference'] == 3){
             $Preference->sex = "Man or Woman";
         } else
         $Preference->sex = ($validatedUser['sex_preference'] == 1)? "Man":"Woman";
-        $Preference->relationship_type_id = $request['relationship_type_id'];
+//        $Preference->relationship_type_id = $request['relationship_type_id'];
 
-        $Preference->max_height_id = Height::all()->first()->id;
-        $Preference->min_height_id = Height::latest()->first()->id;
+        $Preference->min_height_id = Height::all()->orderBy('id', 'asc')->first()->id;
+        $Preference->max_height_id = Height::all()->orderBy('id', 'desc')->first()->id;
         $Preference->min_age = 18;
         $Preference->max_age = 100;
         //dd($preference);
@@ -419,7 +425,7 @@ class UserController extends Controller
 
 
 
-        
+
          //save ello score
              $elloscore = new ElloScore();
              $elloscore->user_id = $user->id;
@@ -427,19 +433,19 @@ class UserController extends Controller
              $elloscore->like_count = 0;
              $elloscore->final_score = 1.0;
              $elloscore->save();
- 
 
-            if($phone_number!=null){    
+
+            if($phone_number!=null){
             //save phone link
             $phone_link = new Phonenumber();
             $phone_link->phone_number = $phone_number;
             $phone_link->user_id = $user->id;
             $phone_link->save();
             }
- 
+
         // //3 new likes
         // $allUsers = User::all();
-        
+
 
         // foreach($allUsers as $u){
         //     if($u->id==$user->id)continue;
@@ -449,14 +455,26 @@ class UserController extends Controller
         //     $match->seen = 0;
         //     $match->save();
         // }
-        
-        //3 new matches
+
+        $lastKnown = new LastKnown();
+        $lastKnown->user_id = $user->id;
+        $lastKnown->save();
+
+        //Free membership for first time registration
+
+        $payment_type = PaymentType::where('type', '=', 'subscribtion')->first();
+        if($payment_type!=null) {
+            $payment = new Payment();
+            $payment->user_id = $user->id;
+            $payment->payment_type_id = $payment_type->id;
+            $today = Carbon::now();
+            $payment->expiration_date = $today->addDays($payment_type->date_length);
+            $payment->save();
+        }
+
 
         return new SignedUserResource(Profile::find($profile->id));
         // return new ProfileFPResource(Profile::Where('id', '=', $profile->id)->first());
-
-
-        
     }
 
 
@@ -465,21 +483,21 @@ class UserController extends Controller
 
           $user = User::find($request['user_id']);
           $allUsers = User::all();
-        
+
           foreach($allUsers as $u){
               if($u->id==$user->id)continue;
               $like = new Like();
               $like->liker_user_id = $u->id;
               $like->liked_user_id = $user->id;
-          
+
               $picture = Picture::where('user_id', '=', $user->id)->first();
               $like->picture_id = $picture->id;
-              
+
               $like->notified = false;
               $like->comment = "U luk cute!";
-              $like->save();    
+              $like->save();
           }
-  
+
           foreach($allUsers as $u){
               if($u->id==$user->id)continue;
               $match = new Match();
@@ -488,8 +506,8 @@ class UserController extends Controller
               $match->seen = 0;
               $match->save();
           }
-          
-      
+
+
           return response()->json(["status"=>"success"]);
           //3 new matches
     }
@@ -578,7 +596,7 @@ class UserController extends Controller
 
 
     public function getVgetVitalsStruct(){
-        
+
 
         $payment_type = PaymentTypeResource::collection(PaymentType::all());
         $heights = HeightResource::collection(Height::all());
@@ -609,7 +627,8 @@ class UserController extends Controller
                 "drink" => $drink,
                 "payment_types" => $payment_type,
                 "phone_number" => $setting->phone_number,
-                "bank_account"=> $setting->bank_account
+                "bank_account"=> $setting->bank_account,
+                "free_tg_invitation"=> $setting->free_tg_invitation
                 ]);
 
     }
@@ -622,31 +641,31 @@ class UserController extends Controller
         $profile = new Profile();
         $location = new Location();
         $Preference = new Preference();
-        $location->user_id = $request['user_id']; 
-        $location->latitude = $validateUser['latitude']; 
+        $location->user_id = $request['user_id'];
+        $location->latitude = $validateUser['latitude'];
         $location->longitude = $validateUser['longitude'];
        // $location->save();
 
- 
-        $profile->user_id = $validateUser['user_id']; 
-        $profile->kid_id = $validateUser['kid']; 
-        $profile->education_id = $validateUser['education']; 
-        $profile->relationship_type_id = $validateUser['relationship_type_id']; 
-        $profile->religion_id = $validateUser['religion']; 
-        $profile->politic_id = $validateUser['politic']; 
-        $profile->sex = $validateUser['sex']; 
-        $profile->age = $validateUser['age']; 
-        $profile->height_id = $validateUser['height']; 
-        $profile->work = $validateUser['work']; 
-        $profile->job = $validateUser['job']; 
-        $profile->school = $validateUser['school']; 
-        $profile->drink_id = $validateUser['drink']; 
+
+        $profile->user_id = $validateUser['user_id'];
+        $profile->kid_id = $validateUser['kid'];
+        $profile->education_id = $validateUser['education'];
+        $profile->relationship_type_id = $validateUser['relationship_type_id'];
+        $profile->religion_id = $validateUser['religion'];
+        $profile->politic_id = $validateUser['politic'];
+        $profile->sex = $validateUser['sex'];
+        $profile->age = $validateUser['age'];
+        $profile->height_id = $validateUser['height'];
+        $profile->work = $validateUser['work'];
+        $profile->job = $validateUser['job'];
+        $profile->school = $validateUser['school'];
+        $profile->drink_id = $validateUser['drink'];
         $profile->smoke_id = $validateUser['smoke'];
 
-        $Preference->user_id = $validateUser['user_id']; 
-        $Preference->kid_id = $validateUser['family_plan']; 
-        $Preference->sex = $validateUser['sex_preference']; 
-        
+        $Preference->user_id = $validateUser['user_id'];
+        $Preference->kid_id = $validateUser['family_plan'];
+        $Preference->sex = $validateUser['sex_preference'];
+
 
         return response()->json([
             "location" => $location,
@@ -655,7 +674,7 @@ class UserController extends Controller
         ]);
 
 
-        
+
     }
 
 
@@ -663,12 +682,12 @@ class UserController extends Controller
     public function getQuestions(Request $request){
 
         $questions = Question::all();
-        
+
         return QuestionResource::collection($questions);
 
 
     }
-    
+
 
     public function setAnswer(Request $request){
 
@@ -678,41 +697,42 @@ class UserController extends Controller
 
         if($answer == null )
             $answer = new Answare();
-    
+
         $answer->question_id = $request["question_id"];
         $answer->text = $request["answer"];
         $answer->user_id = $request["user_id"];
         $answer->order = $request["order"];
         $answer->save();
 
-     
+
         $profile = Profile::where('user_id', '=', $answer->user_id)->first();
         $profile->completed = (55 + (($profile->answers->count() + $profile->pictures->count())*5));
         $profile->save();
-        
+
 
         return new QandAFPResource($answer);
 
 
     }
-    
+
     public function getSignedInUser(Request $request){
 
         $user = User::find($request["user_id"]);
         $profile = Profile::Where('user_id', '=', $user->id )->first();
-        return new SignedUserResource($profile);   
+
+        return new SignedUserResource($profile);
 
 
     }
 
 
     public function deleteUser(Request $request){
-        
+
 
         $validatedUser = $request->validate([
             'user_id' => 'required',
         ]);
-        
+
         $user = User::find($request['user_id']);
 
         if($user == null) return  response()->json(["status" => "success"]);
@@ -756,15 +776,34 @@ class UserController extends Controller
         $elloscore = ElloScore::where('user_id', '=', $user->id)->delete();
         // return $elloscore;
         //match
-       
+
+        $lastKnown = LastKnown::where('user_id', '=', $user->id)->delete();
+        // return $elloscore;
+        //match
+
+        $lastKnown = Nope::where('noped_id', '=', $user->id)->orWhere('noper_id', '=', $user->id)->delete();
+        // return $elloscore;
+        //match
+
+        $lastKnown = PhoneNumber::where('user_id', '=', $user->id)->delete();
+        // return $elloscore;
+        //match
+        $lastKnown = Unmatch::where('user_id_1', '=', $user->id)->orWhere('user_id_2', '=', $user->id)->delete();
+        // return $elloscore;
+        //match
+
+        $lastKnown = Boost::where('user_id', '=', $user->id)->delete();
+        // return $elloscore;
+        //match
+
         $session = Session::where('user_id', '=', $user->id)->delete();
         // return $elloscore;
         //match
-       
+
         $lastTimelogedin = LastTimeLoggedin::where('user_id', '=', $user->id)->delete();
         // return $elloscore;
         //match
-       
+
         $user->delete();
         return response()->json(["status" => "success"]);
         //
@@ -774,19 +813,19 @@ class UserController extends Controller
 
 
     public function getLoggedInformation(Request $request){
-      
+
         $user_id = $request['user_id'];
-        
+
         $user =  User::find($user_id);
-        
+
         if($user != null){
             $profile = new ProfileFPResource(Profile::where('user_id', '=',$user_id)->first());
                 return  new SignedUserResource(Profile::find($profile->id));
         }
         else return response()->json(["No user with this id!"]);
     }
-    
-    
+
+
 
 
 

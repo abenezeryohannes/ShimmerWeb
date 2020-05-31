@@ -329,10 +329,16 @@ class SendPushNotificationController extends Controller
                     // define('AAAAS5D_ibI:APA91bH_ilPYA2qnNG7pbKSLlkm3c5r6DaoEJHxIAd-LYAZPdZrhpQJDU5xHIH8lReY-YkoR_VLgfuY-x9yXC1W6oH6BaXME-mnCeU_gar5c_Pu7LRYo1vbPu2C5ufjG4s01g7dT7Bgn',
                     // 'AIzaSyBaEgYjDEwU8ifDjVCpaJWsvgzLzWvntGA' );
 
+                $body = 'Dear '. $this->user->first_name . " you have successfully bought ". $paymentInfo->paymentType->name;
+                if($paymentInfo->paymentType->type == "subscribtion"){
+                    $body =  $body . ". Your membership days will expire after " . $paymentInfo->paymentType->number_of_days . " days. Enjoy!";
+                }else{
+                    $body = $body . ". Now you have ". $paymentInfo->paymentType->number_of_days . " Boosts Left. Enjoy!";
+                }
             $msg = array
                 (
                     'tag' => $collapse_key,
-                    'body' =>'Dear '. $this->user->first_name . " you have successfully bought ". $paymentInfo->paymentType->name . ". Your membership days will expire after " . $paymentInfo->paymentType->number_of_days . " days.",//. (($matches->count() >1)? 'profile': (($likes->first()->picture_id == null)? "picture" : "answer")),
+                    'body' => $body,//. (($matches->count() >1)? 'profile': (($likes->first()->picture_id == null)? "picture" : "answer")),
                     'title' => "Payment Approved",
                     'data' => 'successfully paid',
                     'sound' => 'default',
@@ -356,7 +362,7 @@ class SendPushNotificationController extends Controller
             if($tokens == null || sizeOf($tokens) == 0) return "No token found!!";
             $fields = array
                 (
-                    'registration_ids'  => $tokens[0],
+                    'to'  => $tokens[0],
                     'notification'  => $msg,
                     'data' => $data,
                     'collapse_key' => $collapse_key

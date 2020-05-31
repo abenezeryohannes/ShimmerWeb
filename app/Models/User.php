@@ -69,6 +69,10 @@ class User extends Authenticatable
     {
         return $this->hasMany("App\Phonenumber");
     }
+    public function telegram()
+    {
+        return $this->hasOne("App\TelegramInvite");
+    }
 
 
 

@@ -23,7 +23,7 @@ class PaymentTypeFull extends JsonResource
             'likes_per_day' => $this->likes_per_day,
             'super_likes_per_day' => $this->super_likes_per_day,
             'view_likes_per_day' => $this->view_likes_per_day,
-            'boost_time' => $this->boost_time,
+            'boost_time' => $this->boost_minutes,
             'price' => $this->price,
             'number_of_days' => $this->number_of_days,
             'amount' => $this->amount

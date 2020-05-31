@@ -29,6 +29,7 @@ class ProfileResource extends JsonResource
         $payment = Payment::where('user_id', '=', $this->user_id)->where('expiration_date', '>', Carbon::now())->get();
         return [
             'user_id' =>$this->user_id,
+            'telegram_user_name' => ($this->user->telegram ==null)? null : $this->user->telegram->telegram_user_name,
             'completed'=>$this->completed,
             'first_name'=>($this->user->first_name == null)?null : strtok($this->user->first_name, ' '),
             'full_name'=>($this->user->first_name),
