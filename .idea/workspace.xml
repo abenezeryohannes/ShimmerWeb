@@ -2,77 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e24300d8-1d69-4177-8181-eee98adb2b1b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/BankReceipt.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/BankReceiptController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/InvitationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TelegramApi.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TelegramInviteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/UserReceiptController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Resources/Telegram.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Invitation.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/TelegramInvite.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/UserReceipt.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_29_165821_create_telegram_invites_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_29_170414_create_invitations_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_30_221032_create_user_receipts_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_30_221057_create_bank_receipts_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/SettingsTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590768732RND9708.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590768732RND9708lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590797481RND92949.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590797481RND92949lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590862288RND94183.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590862288RND94183lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590872211RND43437.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590872211RND43437lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590917010RND42596.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590917010RND42596lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590917386RND226.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590917386RND226lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590917625RND30397.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590917625RND30397lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590918084RND48504.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590918084RND48504lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590918478RND87882.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590918478RND87882lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590918669RND93948.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590918669RND93948lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590923776RND44806.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590923776RND44806lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590923961RND42468.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590923961RND42468lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590924072RND6345.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590924072RND6345lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590924083RND47938.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590924083RND47938lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590924279RND31504.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590924279RND31504lq.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590924466RND36513.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1590924466RND36513lq.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.cpanel.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FindPeopleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FindPeopleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LikeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LikeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MatchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MatchController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MessageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PictureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PictureController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PreferenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PreferenceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SendPushNotificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SendPushNotificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/PaymentResource/PaymentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/PaymentResource/PaymentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/PaymentResource/PaymentTypeFull.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/PaymentResource/PaymentTypeFull.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Resources/SignedInUserResource/ProfileResource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Resources/SignedInUserResource/ProfileResource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Like.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Like.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_08_170919_create_payment_type_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_08_170919_create_payment_type_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_05_06_152921_create_settings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_05_06_152921_create_settings_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/AnswaresTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/AnswaresTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/HeightsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/HeightsTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/PaymentTypesTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PaymentTypesTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/QuestionsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/QuestionsTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserTableSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +195,7 @@
       <workItem from="1590247230837" duration="19000" />
       <workItem from="1590325833299" duration="8879000" />
       <workItem from="1590758929361" duration="24000" />
-      <workItem from="1590934983798" duration="3935000" />
+      <workItem from="1590934983798" duration="5293000" />
     </task>
     <task id="LOCAL-00001" summary="For Heroku">
       <created>1571821703233</created>
@@ -371,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590334185750</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="before chat, match, notification">
+      <created>1590939051446</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1590939051446</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,10 +342,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="429" y="203" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.738@0.0.1366.738" timestamp="1590759090719" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1590334168750">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1590939042759">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1590334168750" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1590939042759" />
     <state x="149" y="55" key="DiffContextDialog" timestamp="1590229708276">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -432,10 +370,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="13" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1590230052761" />
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1590334209937">
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2" timestamp="1590939079751">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1590334209937" />
+    <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1590939079751" />
     <state x="339" y="165" key="run.anything.popup" timestamp="1590935286818">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

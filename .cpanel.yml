@@ -1,0 +1,34 @@
+---
+deployment:
+    tasks:
+        - export DEPLOYPATH=/home/cutehabeshasingl/public_html/Shimmer
+        - /bin/cp -R images $DEPLOYPATH
+        - /bin/cp -R app $DEPLOYPATH
+        - /bin/cp -R bootstrap $DEPLOYPATH
+        - /bin/cp -R config $DEPLOYPATH
+        - /bin/cp -R database $DEPLOYPATH
+        - /bin/cp -R node_modules $DEPLOYPATH
+        - /bin/cp -R public $DEPLOYPATH
+        - /bin/cp -R resources $DEPLOYPATH
+        - /bin/cp -R routes $DEPLOYPATH
+        - /bin/cp -R storage $DEPLOYPATH
+        - /bin/cp -R tests $DEPLOYPATH
+        - /bin/cp -R vendor $DEPLOYPATH
+        - /bin/cp artisan $DEPLOYPATH
+        - /bin/cp cacert.pem $DEPLOYPATH
+        - /bin/cp composer $DEPLOYPATH
+        - /bin/cp composer.lock $DEPLOYPATH
+        - /bin/cp .cpanel.yml $DEPLOYPATH
+        - /bin/cp package $DEPLOYPATH
+        - /bin/cp phpunit $DEPLOYPATH
+        - /bin/cp Procfile $DEPLOYPATH
+        - /bin/cp readme.md $DEPLOYPATH
+        - /bin/cp server.php $DEPLOYPATH
+        - /bin/cp webpack.mix $DEPLOYPATH
+        - /bin/cp .env $DEPLOYPATH
+        - /bin/cp .env.example $DEPLOYPATH
+        - /bin/cp .gitattributes $DEPLOYPATH
+        - /bin/cp .gitignore $DEPLOYPATH
+        - /bin/cp .rnd. $DEPLOYPATH
+        - /bin/cp .styleci.yml $DEPLOYPATH
+
