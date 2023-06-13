@@ -3,11 +3,11 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=abenezeryohannes&label=Profile%20views&color=0e75b6&style=flat" alt="abenezeryohannes" /> </p>
 
-- 👯 I’m looking to collaborate on **react, flutter and nodejs projects**
+- 👯 I’m looking to collaborate on **React, Flutter and Nodejs projects**
 
 - 👨‍💻 All of my projects are available at [abenezeryohannes.github.io](abenezeryohannes.github.io)
 
-- 💬 Ask me about **react, flutter, Nextjs, Vue, Nestjs and Express frameworks**
+- 💬 Ask me about **Reactjs, Flutter, Nextjs, Nestjs and Express frameworks**
 
 - 📫 How to reach me **abenezeryohannes@gmail.com**
 
