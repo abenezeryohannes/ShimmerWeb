@@ -3,17 +3,17 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=abenezeryohannes&label=Profile%20views&color=0e75b6&style=flat" alt="abenezeryohannes" /> </p>
 
-- 👯 I’m looking to collaborate on **React, Flutter and Nodejs projects**
+- 👯 I’m looking to collaborate on **Nodejs and Flutter projects**
 
 - 👨‍💻 All of my projects are available at [abenezeryohannes.github.io](abenezeryohannes.github.io)
 
-- 💬 Ask me about **Reactjs, Flutter, Nextjs, Nestjs and Express frameworks**
+- 💬 Ask me about **NodeJS, Flutter, Nestjs and Express frameworks**
 
 - 📫 How to reach me **abenezeryohannes@gmail.com**
 
 - 📄 Know about my experiences [abenezeryohannes.github.io](https://abenezeryohannes.github.io)
 
-- ⚡ Fun fact **I specialize in transforming ideas into reality, from designing to implementing the backend using Node.js and crafting the frontend with React and Flutter. With my expertise, I can swiftly present an idea in both web and mobile app versions**
+- ⚡ Fun fact **I specialize in transforming ideas into reality, from designing to implementing the backend using Node.js and crafting the frontend with React/Vue and Flutter. With my expertise, I can swiftly present an idea in both web and mobile app versions**
 
 ### Blogs posts
 <!-- BLOG-POST-LIST:START -->
